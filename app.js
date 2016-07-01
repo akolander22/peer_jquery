@@ -18,11 +18,11 @@ function showMeTheMoney(buttonsList){
 }
 
 $('.buttons').on('click', function(event){
-
   tempX = parseInt(event.target.id);
-
   buttonsList.push(tempX);
   // console.log(buttonsList);
+  $('.answerField').empty();
+  $('.answerField').append('<h2>' + buttonsList[0] + '</h2>');
   if(buttonsList.length >= 2) {
     showMeTheMoney(buttonsList);
     buttonsList = [];
