@@ -1,40 +1,31 @@
 $(function(){
 
-
-
 var buttonsList = [];
 var numOfButtons = 10;
 var tempX;
-var tempY;
+addButtons(numOfButtons);
 
 function addButtons(buttons){
   for (var i = 0; i < numOfButtons; i++) {
-    buttonsList.push([i]);
-    $('section').append('<button type="button" id="' + i + '"<h1>' + i  + '</h1></button>')
+    $('.buttons').append('<button type="button" id="' + i + '"<h1>' + i  + '</h1></button>');
   }
   // console.log(buttonsList);
 }
-
-addButtons();
+function showMeTheMoney(buttonsList){
+  $('.answerField').empty();
+  var answer = buttonsList[0] + buttonsList[1];
+  $('.answerField').append('<h2>'+ buttonsList[0] + ' + ' + buttonsList[1] + ' = ' + answer + '</h2>');
+}
 
 $('.buttons').on('click', function(event){
-  // event.preventDefault();
+
   tempX = parseInt(event.target.id);
-  $(this).append('<p>' + tempX + '</p>');
-  // $('.buttons').on('click', function(event){
-  //   tempY = parseInt(event.target.id);
-  //   $(this).append('<p>' + tempX + tempY + '</p>');
-  // })
-})
 
-// $('.buttons').on('click', function(event){
-//   // event.preventDefault();
-//   tempY = parseInt(event.target.id);
-//   $(this).append('<p>' + tempY + '</p>');
-//
-// })
-
+  buttonsList.push(tempX);
+  // console.log(buttonsList);
+  if(buttonsList.length >= 2) {
+    showMeTheMoney(buttonsList);
+    buttonsList = [];
+  }
 });
-// var tempY = parseInt(event.target.id);
-// $(this).append('<p>' + tempY + '</p>');
-// });
+})
